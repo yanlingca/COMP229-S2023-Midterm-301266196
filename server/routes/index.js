@@ -9,7 +9,7 @@ let book = require('../models/books');
 /* GET home page. wildcard */
 router.get('/', (req, res, next) => {
   res.render('content/index', {
-    title: 'Home',
+    title: 'COMP229 - S2023 - Mid Term Test',
     books: ''
    });
 });

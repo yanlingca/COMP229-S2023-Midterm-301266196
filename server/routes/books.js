@@ -49,7 +49,7 @@ router.post('/add', async(req, res, next) => {
     });
     try {
       const savedBook = await newbook.save()
-      console.log("add:" + newbook);
+      console.log("add: " + newbook);
       res.redirect("/books");
     } catch(err) {
       console.log("ERROR : " + res.json({message : err}));
@@ -60,7 +60,7 @@ router.post('/add', async(req, res, next) => {
 router.get('/:id', async(req, res, next) => {
     try{
       const editBook = await book.findOne({_id : req.params.id});
-      console.log("get:" + editBook);
+      console.log("get: " + editBook);
       res.render('books/details', {
         title: 'Edit Book',
         books: editBook
@@ -79,7 +79,7 @@ router.post('/:id', async(req, res, next) => {
           Price: req.body.price,
           Author: req.body.author,
           Genre: req.body.genre} } );
-      console.log("update:"+updatedBook);
+      console.log("update: "+updatedBook);
       res.redirect("/books");
     } catch(err) {
         console.log("ERROR : " + res.json({message : err}));
@@ -88,10 +88,9 @@ router.post('/:id', async(req, res, next) => {
 
 // GET - process the delete by book id
 router.get('/delete/:id', async(req, res, next) => {
-    console.log("delete");
     try {
       const deletedBook = await book.deleteOne( { _id: req.params.id } );
-      console.log("delete"+deletedBook);
+      console.log("delete: "+deletedBook);
       res.redirect("/books");
     } catch(err) {
         console.log("ERROR : " + res.json({message : err}));

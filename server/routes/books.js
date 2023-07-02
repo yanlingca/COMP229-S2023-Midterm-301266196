@@ -55,7 +55,7 @@ router.post('/add', async(req, res, next) => {
     });
     try {
       const savedBook = await newbook.save()
-      console.log(savedBook);
+      console.log("delete:/n" + savedBook);
       res.redirect("/books");
     } catch(err) {
       console.log("ERROR : " + res.json({message : err}));

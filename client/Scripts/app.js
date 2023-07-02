@@ -1,3 +1,10 @@
+/*
+Filename: app.js
+Author's Name: Chi Yan, Ling
+StudentID: 301266196
+Web App Name: COMP229-S2023-Midterm-301266196
+*/
+
 /* custom JS goes here */
 
 /* pagination code from http://www.bootply.com/lxa0FF9yhw */
@@ -118,7 +125,7 @@ $.fn.pageMe = function(opts){
     );
 })();
 
-//Detail Form Button
+//Detail Form Button : Add / Update
 $(document).on("click", ".submit", function(){
     var id = document.getElementById("IdTextField");
     var title = document.getElementById("NameTextField");

@@ -20,7 +20,7 @@ mongoDB.once('open', ()=> {
   console.log("Connected to MongoDB...");
 });
 //import json file to mongoDB
-const fs = require('fs')
+/*const fs = require('fs')
 const data = JSON.parse(fs.readFileSync('books.json', 'utf-8'))
 console.log(data)
 const importData = async () => {
@@ -30,7 +30,7 @@ const importData = async () => {
   } catch (error) {
     console.log('error', error)
   }
-}
+}*/
 //importData()
 
 // define routers

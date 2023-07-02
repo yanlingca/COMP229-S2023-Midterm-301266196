@@ -25,9 +25,6 @@ router.get('/', (req, res, next) => {
 
 //  GET the Book Details page in order to add a new Book
 router.get('/add', (req, res, next) => {
-    /*****************
-     * ADD CODE HERE *
-     *****************/
     //Create blankBook book object for blank form
     const blankBook = {
       "_id": "",
@@ -44,9 +41,6 @@ router.get('/add', (req, res, next) => {
 
 // POST process the Book Details page and create a new Book - CREATE
 router.post('/add', async(req, res, next) => {
-    /*****************
-     * ADD CODE HERE *
-     *****************/
     const newbook = new book ({
       Title: req.body.title,
       Price: req.body.price,
@@ -64,10 +58,6 @@ router.post('/add', async(req, res, next) => {
 
 // GET the Book Details page in order to edit an existing Book
 router.get('/:id', async(req, res, next) => {
-
-    /*****************
-     * ADD CODE HERE *
-     *****************/
     try{
       const editBook = await book.findOne({_id : req.params.id});
       console.log(editBook);
@@ -82,10 +72,6 @@ router.get('/:id', async(req, res, next) => {
 
 // POST - process the information passed from the details form and update the document
 router.post('/:id', async(req, res, next) => {
-
-    /*****************
-     * ADD CODE HERE *
-     *****************/
     try {
       console.log(req.params.id);
       const updatedBook = await book.updateOne(
@@ -103,10 +89,6 @@ router.post('/:id', async(req, res, next) => {
 
 // GET - process the delete by book id
 router.get('/delete/:id', async(req, res, next) => {
-
-    /*****************
-     * ADD CODE HERE *
-     *****************/
     console.log("delete");
     try {
       const deletedBook = await book.deleteOne( { _id: req.params.id } );

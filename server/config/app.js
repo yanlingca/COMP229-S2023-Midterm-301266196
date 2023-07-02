@@ -4,6 +4,8 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+// define the book model
+let book = require('../models/books');
 
 // import "mongoose" - required for DB Access
 let mongoose = require('mongoose');
@@ -17,7 +19,19 @@ mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
 mongoDB.once('open', ()=> {
   console.log("Connected to MongoDB...");
 });
-
+//import json file to mongoDB
+const fs = require('fs')
+const data = JSON.parse(fs.readFileSync('books.json', 'utf-8'))
+console.log(data)
+const importData = async () => {
+  try {
+    await book.create(data.books)
+    console.log('data successfully imported')
+  } catch (error) {
+    console.log('error', error)
+  }
+}
+//importData()
 
 // define routers
 let index = require('../routes/index'); // top level routes
@@ -35,7 +49,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../client')));
-
 
 // route redirects
 app.use('/', index);

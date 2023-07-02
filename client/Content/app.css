@@ -3,3 +3,11 @@ body {
   padding-bottom: 70px;
   }
 
+.table-responsive img{
+  width: 30px;
+}
+
+/*Hidden id in detail form*/
+#IdTextField{
+  display: none;
+}

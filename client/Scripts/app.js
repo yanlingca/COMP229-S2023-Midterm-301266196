@@ -117,3 +117,37 @@ $.fn.pageMe = function(opts){
     {pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:6}
     );
 })();
+
+//Detail Form Button
+$(document).on("click", ".submit", function(){
+    var id = document.getElementById("IdTextField");
+    var title = document.getElementById("NameTextField");
+    var price = document.getElementById("PriceTextField");
+    var author = document.getElementById("AuthorTextField");
+    var genre = document.getElementById("GenreTextField");
+    //Add new or update existing contact
+    const xhr = new XMLHttpRequest();
+    //if id is not empty string, update the record
+    if (id !== ""){
+        console.log("edit");
+        xhr.open("POST", "./"+id);
+    }else{
+        console.log("add");
+        xhr.open("POST", "add");
+    }
+    xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    const body = JSON.stringify({
+        Title: title, 
+        Price: price, 
+        Author: author,
+        Genre: genre
+    });
+    xhr.onload = () => {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        console.log(JSON.parse(xhr.responseText));
+    } else {
+        console.log(`Error: ${xhr.status}`);
+    }
+    };
+    xhr.send(body);
+});
